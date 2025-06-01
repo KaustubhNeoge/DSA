@@ -21,5 +21,12 @@ int  main() {
 	cout << "Length: " << ptr->length << endl;
 	cout << "Breadth: " << ptr->breadth << endl;
 
+	struct Rectangle* p; // Pointer to a structure
+	p = new Rectangle; // Dynamically allocating memory for a new Rectangle structure
+	p->length = 30; // Assigning values using pointer to the dynamically allocated structure
+	p->breadth = 15;
+	cout << "Length: " << p->length << endl;
+	cout << "Breadth: " << p->breadth << endl;
+
 	return 0;
 }
