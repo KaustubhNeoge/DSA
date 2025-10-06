@@ -1,24 +1,27 @@
 #include<iostream>
 #include<stdio.h>
 using namespace std;
+
 struct Array {
     int* A;
     int size;
     int length;
 };
 
-void Display(struct Array arr) {
-    cout << "The elements are: " << endl;
-    for (int i = 0; i < arr.length; i++) {
-        cout << arr.A[i] << " ";
-    }
-    cout << endl;
-}
-
-int linearSearch(Array arr, int key) {
-    for (int i = 0; i < arr.length; i++) {
-        if(key == arr.A[i]) {
-            return i;
+int BinarySearch(struct Array arr, int key) {
+    int l, mid, h;
+    l = 0;
+    h = arr.length - 1;
+    while (l <= h) {
+        mid = (l + h) / 2;
+        if (key == arr.A[mid]) {
+			return mid;
+        }
+        else if(key < arr.A[mid]) {
+            h = mid - 1;
+        }
+        else {
+            l = mid + 1;
         }
     }
     return -1;
@@ -27,32 +30,26 @@ int linearSearch(Array arr, int key) {
 int main() {
     struct Array arr;
     int i, n;
-    printf("Enter the size of the array: ");
+    cout << "Enter size of the array: " << flush;
     cin >> arr.size;
     arr.A = new int[arr.size];
-    cout << "Enter the nummber of elements: " << endl;
+    cout << "Enter the number of elements: " << flush;
     cin >> n;
     if (n > arr.size) {
-        cout << "Number of elements exceeds array size." << endl;
-        delete[] arr.A;
+        cout << "Number of elements exceed the size of the array.";
+            delete[] arr.A;
         return 1;
     }
     arr.length = n;
-    for (i = 0; i < n; i++) {
-        cout << "Enter element " << i + 1 << ": ";
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter a number: " << flush;
         cin >> arr.A[i];
     }
-    //Display(arr);
-
-    int key = 0;
-    cout << "Enter the element to be searched: ";
+    cout << "Enter the element to be searched: " << flush;
+    int key;
     cin >> key;
-    int index = linearSearch(arr, key);
-    if (index != -1) {
-        cout << "Element found at index: " << index << endl;
-    } else {
-        cout << "Element not found." << endl;
-    }
-    delete[] arr.A;
-}
+    cout << "Index of the searched element is: " << BinarySearch(arr, key) << endl;
 
+
+}
