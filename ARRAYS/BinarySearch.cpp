@@ -34,7 +34,7 @@ int main(){
     cout << "Enter the number of elements: " << flush;
     cin >> n;
     if(n > arr.size){
-        cout << "Number of elements exceed the size of the array."
+        cout << "Number of elements exceed the size of the array.";
         delete[] arr.A;
         return 1;
     }
@@ -47,4 +47,5 @@ int main(){
     
     
     
+
 }
