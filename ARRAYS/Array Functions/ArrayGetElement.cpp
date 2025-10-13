@@ -15,7 +15,7 @@ void Display(struct Array arr){
 	cout << endl;
 }
 
-int get(struct Array arr, int key){
+int Get(struct Array arr, int key){
     if(key >= 0 && key < arr.length){
         return arr.A[key];
     }
@@ -45,6 +45,6 @@ int main(){
 	
 	cout << "Enter an index to get the corresponding array element: " << flush;
 	cin >> index;
-	int ele = get(arr, index);
+	int ele = Get(arr, index);
 	cout << "The number present at index " << index << " is: " << ele << endl;
 }
